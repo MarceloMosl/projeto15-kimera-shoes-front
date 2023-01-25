@@ -29,17 +29,23 @@ export default function Cadastro(){
     return(
         <>
             <form>
-                <input type="text" placeholder="nome" onChange={e=> setName(e.target.value)}></input><br/>
-                <input type="text" placeholder="sobrenome" onChange={e=> setLastName(e.target.value)}></input><br/>
-                <input type="text" placeholder="email" onChange={e=> setEmail(e.target.value)}></input><br/>
-                <input type="password" placeholder="senha" onChange={e=> setPassword(e.target.value)}></input><br/>
-                <input type="password" placeholder="confirme a senha" onChange={e=> setConfirmPassword(e.target.value)}></input><br/>
+                <div className="colunaEsquerda">
+                    <h2>Dados pessoais</h2>
+                    <input type="text" placeholder="nome" onChange={e=> setName(e.target.value)}></input><br/>
+                    <input type="text" placeholder="sobrenome" onChange={e=> setLastName(e.target.value)}></input><br/>
+                    <input type="text" placeholder="email" onChange={e=> setEmail(e.target.value)}></input><br/>
+                    <input type="password" placeholder="senha" onChange={e=> setPassword(e.target.value)}></input><br/>
+                    <input type="password" placeholder="confirme a senha" onChange={e=> setConfirmPassword(e.target.value)}></input><br/>
+                </div>
+                <div className="colunaDireita">
+                    <h2>Endereço</h2>
                 <input type="text" placeholder="rua" onChange={e=> setStreet(e.target.value)}></input><br/>
                 <input type="number" placeholder="número" onChange={e=> setNumber(e.target.value)}></input><br/>
                 <input type="text" placeholder="cidade" onChange={e=> setCity(e.target.value)}></input><br/>
                 <input type="text" placeholder="estado" onChange={e=> setState(e.target.value)}></input><br/>
                 <button type="submit" onClick={cadastrar}>Cadastrar</button>
                 <p><Link to="/login">Já tem uma conta? Entre agora!</Link></p>
+                </div>
             </form>
             
         </>

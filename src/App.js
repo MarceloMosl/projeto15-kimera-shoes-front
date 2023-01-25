@@ -7,6 +7,7 @@ export default function App() {
   
   return(
     <>
+    <h1>KimeraShoes</h1>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />}/>

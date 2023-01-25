@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Island+Moments&display=swap');
+
+body{
+    background-color: #DBCCFA;
+    opacity: 57%;
+}
+
+h1{
+    font-family: 'Island Moments';
+    color: #397C90;
+    font-size: 140px;
+    display: flex;
+    margin: 30px;
+    justify-content: center;
+}
