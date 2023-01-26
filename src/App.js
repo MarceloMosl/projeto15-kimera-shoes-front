@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Login from "./components/pages/login";
-import Cadastro from "./components/pages/cadastro";
+import Login from "./components/pages/Login";
+import Cadastro from "./components/pages/Cadastro";
 import Home from "./components/pages/home";
 
 export default function App() {
