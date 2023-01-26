@@ -10,6 +10,7 @@ h1{
     color: #397C90;
     font-size: 140px;
     display: flex;
-    margin: 30px;
-    justify-content: center;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 50px;
 }
