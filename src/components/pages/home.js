@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import botaPng from "../../assets/imgs/image 1.png";
 import chineloPng from "../../assets/imgs/image 2.png";
@@ -10,7 +11,7 @@ import casualPng from "../../assets/imgs/image 6.png";
 import corridaPng from "../../assets/imgs/image 7.png";
 import academiaPng from "../../assets/imgs/image 8.png";
 
-export default function Home() {
+export default function Home({ setUserInt }) {
   const [prods, setProds] = React.useState([]);
   const categories = [
     { cat: "Bota", img: botaPng },
@@ -43,19 +44,23 @@ export default function Home() {
       img: academiaPng,
     },
   ];
+  const navigate = useNavigate();
 
   useEffect(() => {
     const promise = axios.get("https://kimera-shoes.onrender.com/produtos");
 
     promise.then((res) => setProds(res.data));
-    promise.catch((err) => console.log(err.response.data));
+    promise.catch((err) => console.log(err.response));
   }, []);
 
   function getProdByCategory(category) {
     const promise = axios.get(
-      `https://kimera-shoes.onrender.com/produtos?category=${category}`
+      `https://kimera-shoes.onrender.com/produtos?category=${category.toLowerCase()}`
     );
-    promise.then((res) => console.log(res.data));
+    promise.then((res) => {
+      setUserInt(res.data);
+      navigate("/category");
+    });
     promise.catch((err) => console.log(err));
   }
 
