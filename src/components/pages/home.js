@@ -74,23 +74,18 @@ export default function Home() {
 
       <h1>Todos</h1>
 
-      {prods.map((v) => {
-        return (
-          <All>
-            <img src={v.img} alt={v.cat} />
-            <div>
-              <section>
-                {v.title} <br />
-                <br />
-                {v.desc}
-              </section>
-            </div>
-            <div>
-              <p>R$ {v.price.toFixed(2)}</p>
-            </div>
-          </All>
-        );
-      })}
+      <List>
+        {prods.map((v) => {
+          return (
+            <All>
+              <img src={v.img} alt={v.cat} />
+              <div>
+                <section>{v.title}</section>
+              </div>
+            </All>
+          );
+        })}
+      </List>
     </div>
   );
 }
@@ -120,25 +115,27 @@ const Types = styled.div`
     text-decoration: underline;
   }
 `;
+const List = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 const All = styled.div`
   display: flex;
+  font-family: "Roboto";
   justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 20px;
+  margin: auto;
+  width: 300px;
+  align-items: center;
   box-sizing: border-box;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  gap: 5px;
   padding: 20px;
-  font-size: 35px;
-  text-align: center;
+  font-size: 20px;
   background-color: white;
   img {
-    width: 250px;
-    height: 250px;
+    width: 100px;
+    height: 100px;
     border-radius: 5px;
-  }
-  span {
-    margin-left: 200px;
-  }
-  section {
-    width: 500px;
   }
 `;
