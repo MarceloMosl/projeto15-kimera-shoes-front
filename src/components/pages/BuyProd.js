@@ -9,12 +9,12 @@ export default function BuyProd({ prodInt }) {
   const [size, setSize] = React.useState("");
 
   function addToCard(prod) {
-    console.log(prod);
+    console.log(prod._id);
     console.log(size);
 
     // const promise = axios.post(
     //   "https://kimera-shoes.onrender.com/cart",
-    //   { ...prod, size },
+    //   { product_id: prod._id, quant: size },
     //   {
     //     headers: { Authorization: `Bearer ${token}` },
     //   }

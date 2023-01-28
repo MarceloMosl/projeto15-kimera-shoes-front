@@ -11,7 +11,7 @@ import casualPng from "../../assets/imgs/image 6.png";
 import corridaPng from "../../assets/imgs/image 7.png";
 import academiaPng from "../../assets/imgs/image 8.png";
 
-export default function Home({ setUserInt }) {
+export default function Home({ setUserInt, setProdInt }) {
   const [prods, setProds] = React.useState([]);
   const categories = [
     { cat: "Bota", img: botaPng },
@@ -82,7 +82,12 @@ export default function Home({ setUserInt }) {
       <List>
         {prods.map((v) => {
           return (
-            <All>
+            <All
+              onClick={() => {
+                setProdInt(v);
+                navigate("/buyScreen");
+              }}
+            >
               <img src={v.img} alt={v.cat} />
               <div>
                 <section>{v.title}</section>
