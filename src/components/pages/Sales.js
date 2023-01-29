@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { products } from "../mock";
 
 export default function Sales() {
     const [paymentMethod, setPaymentMethod] = useState("boleto");
