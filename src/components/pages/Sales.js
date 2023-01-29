@@ -1,10 +1,26 @@
 import styled from "styled-components";
+import { products } from "../mock";
 
 export default function Sales() {
+
     return (
         <Container>
             <Column line={true}>
                 <Subtitle>Resumo da Compra</Subtitle>
+                {/* {
+                    products.map(p => {
+                        return (
+                            <ProductCard key={p._id}>
+                                <ProductImage src={p.img} />
+                                <div>
+                                    <Text>{p.title}</Text>
+                                    <Text>{`Tamanho 43`}</Text>
+                                    <Text>{`R$ ${Number(p.price).toFixed(2)}`}</Text>
+                                </div>
+                            </ProductCard>
+                        )
+                    })
+                } */}
             </Column> 
             <Column>
                 <Subtitle>Formas de Pagamento</Subtitle>
@@ -43,7 +59,7 @@ const Column = styled.div`
     flex-grow: 1;
     border-right: ${props => props.line? "2px solid black" : "none"};
     box-sizing: border-box;
-    padding: 0 0 0 70px;
+    padding: 0 30px 0 70px;
     width: calc(50% - 2px);
     background-color: #DBCCFA;
     
@@ -72,6 +88,7 @@ const StyledLabel = styled.label`
     align-items: flex-start;
     margin-bottom: 10px;
     width: 100%;
+    cursor: pointer;
 `;
 
 const StyledRadio = styled.input`
@@ -91,4 +108,33 @@ const StyledSubmitButton = styled.input`
     height: auto;
     width: 375px;
     cursor: pointer;
+`;
+
+const ProductCard = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+    min-height: 150px;
+    width: 100%;
+    transition: border 1s;
+
+    & div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 25px 0 0 25px;
+    }
+
+    &:hover{
+        border: 1px solid white;
+    }
+`;
+
+const ProductImage = styled.img`
+    object-fit: cover;
+    height: auto;
+    width: 150px;
 `;
