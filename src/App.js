@@ -1,4 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+import homeIcon from "./assets/icons/home.svg";
+import cartIcon from "./assets/icons/cart.svg";
 
 import Login from "./components/pages/Login";
 import Cadastro from "./components/pages/Cadastro";
@@ -8,6 +11,7 @@ import Category from "./components/pages/Category";
 import BuyProd from "./components/pages/BuyProd";
 import Sales from "./components/pages/Sales";
 import UserContext from "./components/context/UserContext";
+import styled from "styled-components";
 
 export default function App() {
   const [userInt, setUserInt] = React.useState("");
@@ -19,6 +23,15 @@ export default function App() {
     <UserContext.Provider value = {{user, setUser}}>
       <h1>Kimera Shoes</h1>
       <BrowserRouter>
+
+        <StyledNav>
+          <Link to="/home">
+            <img src={homeIcon} alt="casa azul" />
+          </Link>
+          <Link to="/sales">
+            <img src={cartIcon} alt="carrinho de compras azul"/>
+          </Link>
+        </StyledNav>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
@@ -38,3 +51,18 @@ export default function App() {
     </>
   );
 }
+
+const StyledNav = styled.nav`
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+
+  & img{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+`;
