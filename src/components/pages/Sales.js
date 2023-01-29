@@ -1,8 +1,39 @@
-import { useState } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import UserContext from "../context/UserContext";
 
 export default function Sales() {
+    const navigate = useNavigate();
     const [paymentMethod, setPaymentMethod] = useState("boleto");
+    const [products, setProducts] = useState([]);
+    const {user} = useContext(UserContext);
+
+    useEffect(() => {
+        async function getProductsOnCart() {
+            const config = {
+                headers: {
+                    authorization: `Bearer ${user.token}` 
+                }
+            };
+    
+            try{
+                const cart = await axios.get("https://kimera-shoes.onrender.com/carrinho", config);
+                setProducts(cart.data);
+            }catch(error){
+                console.log(`Sales Error: ${error.message}`);
+            }
+        }
+
+        getProductsOnCart();
+    }, []);
+
+    console.log(products);
+    function buyProducts(form){
+        form.preventDefault();
+        if(!user) return navigate("/login");
+    }
 
     return (
         <Container>
@@ -17,7 +48,7 @@ export default function Sales() {
             <Column>
                 <Subtitle>Formas de Pagamento</Subtitle>
                 <Text>{`Valor Total R$100,00`}</Text>
-                <StyledForm>
+                <StyledForm onSubmit={(e) => buyProducts(e)}>
                     <StyledLabel>
                         <StyledRadio name="forma_pagamento" type="radio" onChange={(e) => {setPaymentMethod(e.target.value)}} checked={paymentMethod === "boleto"} value="boleto"/>
                         Boleto bancário
