@@ -1,16 +1,38 @@
 // import axios from "axios";
-import React from "react";
+import axios from "axios";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import UserContext from "../context/UserContext";
 
 export default function BuyProd({ prodInt }) {
   const sizes = [37, 38, 39, 40, 41, 42, 43, 44];
   const navigate = useNavigate();
   const [size, setSize] = React.useState("");
 
-  function addToCard(prod) {
+  const {user} = useContext(UserContext);
 
+  async function addToCard(prod) {
+    if (size === "") return alert("Escolha um tamanho");
+    
+    const config = {
+      headers:{
+        authorization: `Bearer ${user.token}`
+      }
+    };
 
+    const data = {
+      product_id: prodInt._id,
+      quant: 1,
+      size
+    };
+
+    try {
+      const res = await axios.post("https://kimera-shoes.onrender.com/carrinho", data, config);
+      console.log(res);
+    } catch (error) {
+      console.log(`Adc Carrinho Error: ${error.message}`);
+    }
   }
 
   return (
@@ -40,7 +62,6 @@ export default function BuyProd({ prodInt }) {
           <End>
             <button
               onClick={() => {
-                navigate("/home");
                 addToCard(prodInt);
               }}
             >
