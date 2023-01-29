@@ -1,41 +1,34 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { products } from "../mock";
 
 export default function Sales() {
+    const [paymentMethod, setPaymentMethod] = useState("boleto");
 
     return (
         <Container>
             <Column line={true}>
                 <Subtitle>Resumo da Compra</Subtitle>
-                {/* {
-                    products.map(p => {
-                        return (
-                            <ProductCard key={p._id}>
-                                <ProductImage src={p.img} />
-                                <div>
-                                    <Text>{p.title}</Text>
-                                    <Text>{`Tamanho 43`}</Text>
-                                    <Text>{`R$ ${Number(p.price).toFixed(2)}`}</Text>
-                                </div>
-                            </ProductCard>
-                        )
-                    })
-                } */}
+                <ProductCard>
+                    <div>
+                        <Text>Não há produtos no carrinho</Text>
+                    </div>
+                </ProductCard>
             </Column> 
             <Column>
                 <Subtitle>Formas de Pagamento</Subtitle>
                 <Text>{`Valor Total R$100,00`}</Text>
                 <StyledForm>
                     <StyledLabel>
-                        <StyledRadio name="forma_pagamento" type="radio" />
+                        <StyledRadio name="forma_pagamento" type="radio" onChange={(e) => {setPaymentMethod(e.target.value)}} checked={paymentMethod === "boleto"} value="boleto"/>
                         Boleto bancário
                     </StyledLabel>
                     <StyledLabel>
-                        <StyledRadio name="forma_pagamento" type="radio" />
+                        <StyledRadio name="forma_pagamento" type="radio" onChange={(e) => {setPaymentMethod(e.target.value)}} checked={paymentMethod === "credito"} value="credito"/>
                         Cartão de crédito
                     </StyledLabel>
                     <StyledLabel>
-                        <StyledRadio name="forma_pagamento" type="radio" />
+                        <StyledRadio name="forma_pagamento" type="radio" onChange={(e) => {setPaymentMethod(e.target.value)}} checked={paymentMethod === "pix"} value="pix"/>
                         Pix
                     </StyledLabel>
 
@@ -116,6 +109,7 @@ const ProductCard = styled.div`
     align-items: center;
     box-sizing: border-box;
     margin: 0 0 10px 0;
+    border-radius: 5px;
     min-height: 150px;
     width: 100%;
     transition: border 1s;
