@@ -39,11 +39,24 @@ export default function Sales() {
         <Container>
             <Column line={true}>
                 <Subtitle>Resumo da Compra</Subtitle>
-                <ProductCard>
-                    <div>
-                        <Text>Não há produtos no carrinho</Text>
-                    </div>
-                </ProductCard>
+                {products.length > 0 ?
+                    products.map(p => {
+                        return (<ProductCard key={p._id}>
+                            <ProductImage src={p.image} />
+                            <div>
+                                <Text>{p.title}</Text>
+                                <Text>Tamanho {p.size}</Text>
+                                <Text>R$ {Number(p.price).toFixed(2)}</Text>
+                            </div>
+                        </ProductCard>)
+                    })
+                    :
+                    <ProductCard>
+                        <div>
+                            <Text>Não há produtos no carrinho</Text>
+                        </div>
+                    </ProductCard>
+                }
             </Column> 
             <Column>
                 <Subtitle>Formas de Pagamento</Subtitle>
