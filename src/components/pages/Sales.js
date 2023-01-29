@@ -8,6 +8,7 @@ export default function Sales() {
     const navigate = useNavigate();
     const [paymentMethod, setPaymentMethod] = useState("boleto");
     const [products, setProducts] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
     const {user} = useContext(UserContext);
 
     useEffect(() => {
@@ -21,6 +22,13 @@ export default function Sales() {
             try{
                 const cart = await axios.get("https://kimera-shoes.onrender.com/carrinho", config);
                 setProducts(cart.data);
+
+                let newPrice = 0;
+                cart.data.forEach(p => {
+                    newPrice = newPrice + Number(p.price);
+                });
+
+                setTotalPrice(newPrice);
             }catch(error){
                 console.log(`Sales Error: ${error.message}`);
             }
@@ -60,7 +68,7 @@ export default function Sales() {
             </Column> 
             <Column>
                 <Subtitle>Formas de Pagamento</Subtitle>
-                <Text>{`Valor Total R$100,00`}</Text>
+                <Text>Valor Total R$ {totalPrice.toFixed(2)}</Text>
                 <StyledForm onSubmit={(e) => buyProducts(e)}>
                     <StyledLabel>
                         <StyledRadio name="forma_pagamento" type="radio" onChange={(e) => {setPaymentMethod(e.target.value)}} checked={paymentMethod === "boleto"} value="boleto"/>
