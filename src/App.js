@@ -20,33 +20,32 @@ export default function App() {
 
   return (
     <>
-    <UserContext.Provider value = {{user, setUser}}>
-      <h1>Kimera Shoes</h1>
-      <BrowserRouter>
-
-        <StyledNav>
-          <Link to="/home">
-            <img src={homeIcon} alt="casa azul" />
-          </Link>
-          <Link to="/sales">
-            <img src={cartIcon} alt="carrinho de compras azul"/>
-          </Link>
-        </StyledNav>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<Cadastro />} />
-          <Route
-            path="/home"
-            element={<Home setUserInt={setUserInt} setProdInt={setProdInt} />}
-          />
-          <Route
-            path="/category"
-            element={<Category setProdInt={setProdInt} userInt={userInt} />}
-          />
-          <Route path="buyScreen" element={<BuyProd prodInt={prodInt} />} />
-          <Route path="/sales" element={<Sales />} />
-        </Routes>
-      </BrowserRouter>
+      <UserContext.Provider value={{ user, setUser }}>
+        <h1>Kimera Shoes</h1>
+        <BrowserRouter>
+          <StyledNav>
+            <Link to="/home">
+              <img src={homeIcon} alt="casa azul" />
+            </Link>
+            <Link to="/sales">
+              <img src={cartIcon} alt="carrinho de compras azul" />
+            </Link>
+          </StyledNav>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/cadastro" element={<Cadastro />} />
+            <Route
+              path="/home"
+              element={<Home setUserInt={setUserInt} setProdInt={setProdInt} />}
+            />
+            <Route
+              path="/category"
+              element={<Category setProdInt={setProdInt} userInt={userInt} />}
+            />
+            <Route path="buyScreen" element={<BuyProd prodInt={prodInt} />} />
+            <Route path="/sales" element={<Sales />} />
+          </Routes>
+        </BrowserRouter>
       </UserContext.Provider>
     </>
   );
@@ -60,7 +59,7 @@ const StyledNav = styled.nav`
   justify-content: space-between;
   width: 80px;
 
-  & img{
+  & img {
     height: 30px;
     width: 30px;
     cursor: pointer;
