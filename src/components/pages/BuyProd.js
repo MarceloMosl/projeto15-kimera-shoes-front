@@ -9,18 +9,8 @@ export default function BuyProd({ prodInt }) {
   const [size, setSize] = React.useState("");
 
   function addToCard(prod) {
-    console.log(prod._id);
-    console.log(size);
 
-    // const promise = axios.post(
-    //   "https://kimera-shoes.onrender.com/cart",
-    //   { product_id: prod._id, quant: size },
-    //   {
-    //     headers: { Authorization: `Bearer ${token}` },
-    //   }
-    // );
-    // promise.then();
-    // promise.catch();
+
   }
 
   return (
@@ -39,9 +29,9 @@ export default function BuyProd({ prodInt }) {
             {sizes.map((a) => (
               <div
                 onClick={() => {
-                  console.log(a);
                   setSize(a);
                 }}
+                style={a === size? {"backgroundColor": "#6d8aa5", "color": "white"}: {}}
               >
                 {a}
               </div>
@@ -54,11 +44,11 @@ export default function BuyProd({ prodInt }) {
                 addToCard(prodInt);
               }}
             >
-              Continuar Comprando
+              Adicionar ao Carrinho
             </button>
             <button
               onClick={() => {
-                navigate("/cart");
+                navigate("/sales");
                 addToCard(prodInt);
               }}
             >
