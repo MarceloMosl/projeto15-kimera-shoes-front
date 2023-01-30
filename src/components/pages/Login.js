@@ -15,11 +15,12 @@ export default function Login() {
     const body = { email, password };
 
     try {
-      const data = await axios.post(
+      const {data} = await axios.post(
         "https://kimera-shoes.onrender.com/login",
         body
       );
       setUser(data);
+      console.log(data);
       navigator("/home");
     } catch (error) {
       console.log(error);
