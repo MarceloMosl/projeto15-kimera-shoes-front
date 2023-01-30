@@ -53,19 +53,8 @@ input{
     height: 400px;
     width: 1px;
     background-color: black;
-    margin-left: 7%;
 }
 
 .cadastro{
     display: flex;
-}
-
-.colunaEsquerda{
-    margin-left: 3%;
-    width: 30%;
-}
-
-.colunaDireita{
-    margin-left: 15%;
-    width: 150%;
 }
