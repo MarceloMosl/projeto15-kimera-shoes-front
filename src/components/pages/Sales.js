@@ -37,10 +37,29 @@ export default function Sales() {
         getProductsOnCart();
     }, []);
 
-    console.log(products);
-    function buyProducts(form){
+    async function buyProducts(form){
         form.preventDefault();
         if(!user) return navigate("/login");
+
+        const config = {
+            headers:{
+              authorization: `Bearer ${user.token}`
+            }
+        };
+
+        const data = {
+            products,
+            totalPrice
+        }
+
+        try {
+            await axios.post("https://kimera-shoes.onrender.com/sales", data, config);
+            alert("Produtos Comprados com Sucesso!");
+            navigate("/home");
+        } catch (error) {
+            console.log(error);
+            alert("Desculpe! Parece que ocorreu um erro ao finalizar a compra! Por favor tente novamente mais tarde.");
+        }
     }
 
     return (
