@@ -29,10 +29,10 @@ export default function BuyProd({ prodInt }) {
     };
 
     try {
-      const res = await axios.post("https://kimera-shoes.onrender.com/carrinho", data, config);
-      console.log(res);
+      await axios.post("https://kimera-shoes.onrender.com/carrinho", data, config);
+      alert("Produto adicionado");
     } catch (error) {
-      console.log(`Adc Carrinho Error: ${error.message}`);
+      console.log(error);
     }
   }
 
@@ -70,11 +70,10 @@ export default function BuyProd({ prodInt }) {
             </button>
             <button
               onClick={() => {
-                navigate("/sales");
-                addToCard(prodInt);
+                navigate("/home");
               }}
             >
-              Ir para o carrinho
+              Continuar Comprando
             </button>
           </End>
         </SpecsProd>
