@@ -13,7 +13,7 @@ export default function BuyProd({ prodInt }) {
   const { user } = useContext(UserContext);
 
   async function addToCard(prod) {
-    if (!user) return navigate("/login");
+    if (!user) return navigate("/");
     if (size === "") return alert("Escolha um tamanho");
 
     const config = {

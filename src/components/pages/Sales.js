@@ -39,7 +39,7 @@ export default function Sales() {
 
     async function buyProducts(form){
         form.preventDefault();
-        if(!user) return navigate("/login");
+        if(!user) return navigate("/");
 
         const config = {
             headers:{
