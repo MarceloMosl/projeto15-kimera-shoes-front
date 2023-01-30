@@ -10,29 +10,33 @@ export default function BuyProd({ prodInt }) {
   const navigate = useNavigate();
   const [size, setSize] = React.useState("");
 
-  const {user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   async function addToCard(prod) {
-    if(!user) return navigate("/login");
+    if (!user) return navigate("/login");
     if (size === "") return alert("Escolha um tamanho");
-    
+
     const config = {
-      headers:{
-        authorization: `Bearer ${user.token}`
-      }
+      headers: {
+        authorization: `Bearer ${user.token}`,
+      },
     };
 
     const data = {
       product_id: prodInt._id,
       quant: 1,
-      size
+      size,
     };
 
     try {
-      const res = await axios.post("https://kimera-shoes.onrender.com/carrinho", data, config);
+      const res = await axios.post(
+        "https://kimera-shoes.onrender.com/carrinho",
+        data,
+        config
+      );
       console.log(res);
     } catch (error) {
-      console.log(`Adc Carrinho Error: ${error.message}`);
+      console.log(error);
     }
   }
 
@@ -54,7 +58,11 @@ export default function BuyProd({ prodInt }) {
                 onClick={() => {
                   setSize(a);
                 }}
-                style={a === size? {"backgroundColor": "#6d8aa5", "color": "white"}: {}}
+                style={
+                  a === size
+                    ? { backgroundColor: "#6d8aa5", color: "white" }
+                    : {}
+                }
               >
                 {a}
               </div>

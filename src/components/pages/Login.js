@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import UserContext from "../context/UserContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Login() {
@@ -39,7 +39,7 @@ export default function Login() {
           ></input>
           <br />
           <input
-            type="text"
+            type="password"
             placeholder="senha"
             onChange={(e) => setPassword(e.target.value)}
           ></input>

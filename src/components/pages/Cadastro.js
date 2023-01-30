@@ -8,7 +8,7 @@ export default function Cadastro() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPasssword, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [street, setStreet] = useState("");
   const [number, setNumber] = useState("");
   const [city, setCity] = useState("");
@@ -22,7 +22,7 @@ export default function Cadastro() {
       lastName,
       email,
       password,
-      confirmPasssword,
+      confirmPassword,
       street,
       number,
       city,
